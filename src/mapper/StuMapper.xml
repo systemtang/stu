@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.foresealife.dao.StuMapper">
+	<resultMap id="BaseResultMap" type="com.foresealife.entity.Student">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="stu_num" jdbcType="VARCHAR" property="stuNum" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="sex" jdbcType="BIT" property="sex" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, stu_num, name, sex
+	</sql>
+
+	<!-- 查询 -->
+	<select id="getStu" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where id = #{id}
+	</select>
+
+	<!-- 删除 -->
+	<delete id="deleteById" parameterType="java.lang.Long">
+		delete from
+		student
+		where id =
+		#{id}
+	</delete>
+	
+	<!--添加 -->
+	<insert id="insert" parameterType="com.foresealife.entity.Student"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+
+			<if test="name != null">
+				name,
+			</if>
+			<if test="stuNum != null">
+				stu_num,
+			</if>
+			<if test="sex != null">
+				is_available,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+
+			<if test="name != null">
+				#{driverName,jdbcType=VARCHAR},
+			</if>
+			<if test="stuNum != null">
+				#{stuNum,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=BIT},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="updateById" parameterType="com.foresealife.entity.Student">
+		update student
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="stuNum != null">
+				stu_num = #{stuNum,jdbcType=VARCHAR},
+			</if>
+
+			<if test="sex != null">
+				sex = #{sex,jdbcType=BIT},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+</mapper>

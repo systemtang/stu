@@ -1,0 +1,55 @@
+.rounds .round-content {
+	margin: 3em auto;
+	font-size: 10px;
+	position: relative;
+	border-top: 0.8em solid #ddd;
+	border-right: 0.8em solid #ddd;
+	border-bottom: 0.8em solid #ddd;
+	border-left: 0.8em solid #ffffff;
+	-webkit-animation: animation 1.1s infinite linear;
+	animation: animation 1.1s infinite linear;
+	display: none;
+}
+
+.rounds .round-content,
+.rounds .round-content:after {
+		  border-radius: 50%;
+		  width: 5em;
+		  height: 5em;
+		}
+       @keyframes animation{
+       	0%{
+       		-webkit-transform: rotate(0deg);
+       		transform: rotate(0deg);
+       	}
+       	100%{
+       		-webkit-transform: rotate(360deg);
+       		transform: rotate(360deg);
+       	}
+       }
+        @-webkit-keyframes animation{
+       	0%{
+       		-webkit-transform: rotate(0deg);
+       		transform: rotate(0deg);
+       	}
+       	100%{
+       		-webkit-transform: rotate(360deg);
+       		transform: rotate(360deg);
+       	}
+       }
+       
+       
+.my_loginPanel{
+	width:33%;
+	position:absolute;
+	left:33%;
+	top:25%;
+}
+
+.panel-body input{
+	margin-top: 2px;
+}
+
+.checkCodeImg{
+	background: red;width: 39%;height:30px;float:left;margin-top: 2px;
+}
